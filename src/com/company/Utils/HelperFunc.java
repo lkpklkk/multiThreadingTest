@@ -10,9 +10,11 @@ public class HelperFunc
 {
     private static final String DATA_FOR_RANDOM_STRING = "abcdefghijklmn";
     private static final int MAX_FILE_NAME_LENGTH = 50;
+    private static final int MAX_FILE_NUM = 10;
+    private static final int MAX_FILE_LENGTH = 50;
     public static void generateFiles(String dir){
         Random rand = new Random();
-        int firstCount = rand.nextInt(279);
+        int firstCount = rand.nextInt(MAX_FILE_NUM) + 1;
         while (firstCount != 0) {
             String filename;
             try {
@@ -37,7 +39,7 @@ public class HelperFunc
 
                 // true for append mode
                 //str stores the string which we have entered
-                int secondCount = rand.nextInt(500);
+                int secondCount = rand.nextInt(MAX_FILE_LENGTH);
                 int numStrings = (secondCount / (rand.nextInt(10)+1)+1);
                 ArrayList<String> listOfString = new ArrayList<>();
                 for (int i = 0;i<numStrings;i++){

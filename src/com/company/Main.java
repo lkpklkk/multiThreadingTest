@@ -28,9 +28,8 @@ public class Main {
                 Runnable runnable = input.getRunner();
                 pool.execute(runnable);
             }
+            pool.shutdown();
 
-        }else {
-            return;
         }
 
 

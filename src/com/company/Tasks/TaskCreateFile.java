@@ -12,6 +12,7 @@ public class TaskCreateFile implements Runnable{
     private int loopTime;
     @Override
     public void run() {
+
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
         File file = new File(s + "\\genedFiles");
@@ -19,7 +20,7 @@ public class TaskCreateFile implements Runnable{
 
         HelperFunc.generateFiles(file.getAbsolutePath());
         System.out.println(file.getAbsolutePath());
-        //TODO generate
+
     }
 }
 

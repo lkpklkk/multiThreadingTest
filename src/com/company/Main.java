@@ -1,8 +1,6 @@
 package com.company;
 
-import com.company.Tasks.BubbleSort;
 import com.company.Utils.InitIo;
-import com.company.Utils.Input;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,21 +13,27 @@ public class Main {
 	// write your code here
 
         Input input = InitIo.userIn();
-        if (input.getMode() == 1){
-            for (int i = 0; i < input.getUserNum();i++){
-                Runnable runnable = input.getRunner();
-                Thread thread = new Thread(runnable);
-                thread.start();
-            }
+        Runnable runner = input.getRunner();
+        int mode = input.getMode();
+        int num = input.getUserNum();
+        switch (mode){
+            default:System.out.println("mode invalid");
+            case 1:
 
-        }else if(input.getMode() == 2) {
-            ExecutorService pool = Executors.newFixedThreadPool(input.getPoolSize());
-            for (int i = 0; i < input.getUserNum();i++){
-                Runnable runnable = input.getRunner();
-                pool.execute(runnable);
-            }
-            pool.shutdown();
+                for (int i = 0; i < num;i++){
 
+                    Thread thread = new Thread(runner);
+                    thread.start();
+                }
+                break;
+            case 2:
+                ExecutorService pool = Executors.newFixedThreadPool(input.getPoolSize());
+                for (int i = 0; i < num;i++){
+                    pool.execute(runner);
+                }
+                pool.shutdown();
+
+                break;
         }
 
 

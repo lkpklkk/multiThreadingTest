@@ -1,19 +1,15 @@
 package com.company.Utils;
 
-import com.company.Tasks.BubbleSort;
-import com.company.Tasks.TaskCreateFile;
+import com.company.Input;
+import com.company.Runnable.BubbleSort;
+import com.company.Runnable.SimpleSth;
+import com.company.Runnable.TaskCreateFile;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class InitIo {
 
-    private static final int ARR_LENGTH = 500;
-    private static final int ARR_NUM = 500;
+
 
     public static Input userIn(){
         Input input = new Input();
@@ -77,9 +73,10 @@ public class InitIo {
             try {
                 System.out.println("select task:\n" +
                         "1 : bubble sort\n" +
-                        "2 : generate random files\n");
+                        "2 : generate random files\n" +
+                        "3 : simple operation");
                 num = Integer.parseInt(scanner.nextLine());
-                if (num != 1 && num != 2){
+                if (num != 1 && num != 2 && num != 3){
                     throw new NumberFormatException();
                 }
             }catch (NumberFormatException e){
@@ -87,10 +84,14 @@ public class InitIo {
                 continue;
 
             }
-            if (num == 1){
-                input.setRunner(new BubbleSort(ARR_LENGTH,ARR_NUM));
-            }else {
-                input.setRunner(new TaskCreateFile());
+            switch (num){
+                default:break;
+                case 1: input.setRunner(new BubbleSort());
+                    break;
+                case 2: input.setRunner(new TaskCreateFile());
+                    break;
+                case 3: input.setRunner(new SimpleSth());
+                    break;
             }
             break;
         }

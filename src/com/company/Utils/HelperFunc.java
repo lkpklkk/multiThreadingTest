@@ -11,7 +11,7 @@ public class HelperFunc
     private static final String DATA_FOR_RANDOM_STRING = "abcdefghijklmn";
     private static final int MAX_FILE_NAME_LENGTH = 50;
     private static final int MAX_FILE_NUM = 10;
-    private static final int MAX_FILE_LENGTH = 50;
+    private static final int MAX_FILE_LENGTH = 100;
     public static void generateFiles(String dir){
         Random rand = new Random();
         int firstCount = rand.nextInt(MAX_FILE_NUM) + 1;

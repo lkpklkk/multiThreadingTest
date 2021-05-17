@@ -1,4 +1,4 @@
-package com.company.Utils;
+package com.company;
 
 public class Input {
     public int getMode() {

@@ -1,19 +1,20 @@
-package com.company.Tasks;
+package com.company.Runnable;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author lekeping
+ */
 public class BubbleSort implements Runnable{
-    private int arrSize;
-    private int arrNum;
+    private static final int ARR_LENGTH = 500 ;
+    private static final int ARR_NUM = 500;
     private Random random;
-    public BubbleSort(int arrSize, int arrNum) {
-        this.arrSize = arrSize;
-        this.arrNum = arrNum;
+    public BubbleSort() {
         this.random = new Random();
     }
     private ArrayList<Integer> createArr(){
-        int size = random.nextInt(arrSize)+1;
+        int size = random.nextInt(ARR_LENGTH)+1;
         ArrayList<Integer> list = new ArrayList<>(size);
         for (int i = 0;i < size;i++){
             list.add(random.nextInt(size)+1);
@@ -31,11 +32,12 @@ public class BubbleSort implements Runnable{
                     arr.set(j, arr.get(j + 1));
                     arr.set(j + 1, temp);
                 }}}
+        System.out.println("ok\n");
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < arrNum;i ++){
+        for (int i = 0; i < ARR_NUM;i ++){
             ArrayList<Integer> list = createArr();
             bubblesort(list);
         }

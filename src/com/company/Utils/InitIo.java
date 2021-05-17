@@ -6,12 +6,18 @@ import com.company.Runnable.SimpleSth;
 import com.company.Runnable.TaskCreateFile;
 
 import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
 
 public class InitIo {
 
+    private CountDownLatch countDownLatch;
+
+    public CountDownLatch getCountDownLatch() {
+        return countDownLatch;
+    }
 
 
-    public static Input userIn(){
+    public Input userIn(){
         Input input = new Input();
         Scanner scanner = new Scanner(System.in);
         boolean modeTwo = false;
@@ -32,6 +38,7 @@ public class InitIo {
             }
             break;
         }
+        countDownLatch = new CountDownLatch(num);
         while (true){
             try {
                 System.out.println("enter mode selection:\n" +
@@ -84,13 +91,14 @@ public class InitIo {
                 continue;
 
             }
+
             switch (num){
                 default:break;
-                case 1: input.setRunner(new BubbleSort());
+                case 1: input.setRunner(new BubbleSort(countDownLatch));
                     break;
                 case 2: input.setRunner(new TaskCreateFile());
                     break;
-                case 3: input.setRunner(new SimpleSth());
+                case 3: input.setRunner(new SimpleSth(countDownLatch));
                     break;
             }
             break;

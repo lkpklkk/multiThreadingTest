@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="j02-作业四:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/j02__jar</output-path>
+    <root id="archive" name="j02-作业四.jar">
+      <element id="module-output" name="j02-作业四" />
+    </root>
+  </artifact>
+</component>

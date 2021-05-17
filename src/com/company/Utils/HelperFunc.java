@@ -41,7 +41,7 @@ public class HelperFunc
                 //str stores the string which we have entered
                 int secondCount = rand.nextInt(MAX_FILE_LENGTH);
                 int numStrings = (secondCount / (rand.nextInt(10)+1)+1);
-                ArrayList<String> listOfString = new ArrayList<>();
+                ArrayList<String> listOfString = new ArrayList<String>();
                 for (int i = 0;i<numStrings;i++){
                     listOfString.add(generateRandomString(rand.nextInt(20)+1));
                 }

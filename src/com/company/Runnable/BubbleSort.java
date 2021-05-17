@@ -2,20 +2,23 @@ package com.company.Runnable;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author lekeping
  */
 public class BubbleSort implements Runnable{
     private static final int ARR_LENGTH = 500 ;
-    private static final int ARR_NUM = 500;
+    private static final int ARR_NUM = 10;
     private Random random;
-    public BubbleSort() {
+    CountDownLatch latch;
+    public BubbleSort(CountDownLatch latch) {
         this.random = new Random();
+        this.latch = latch;
     }
     private ArrayList<Integer> createArr(){
         int size = random.nextInt(ARR_LENGTH)+1;
-        ArrayList<Integer> list = new ArrayList<>(size);
+        ArrayList<Integer> list = new ArrayList<Integer>(size);
         for (int i = 0;i < size;i++){
             list.add(random.nextInt(size)+1);
         }
@@ -41,5 +44,6 @@ public class BubbleSort implements Runnable{
             ArrayList<Integer> list = createArr();
             bubblesort(list);
         }
+        latch.countDown();
     }
 }

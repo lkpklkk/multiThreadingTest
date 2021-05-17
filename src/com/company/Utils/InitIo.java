@@ -2,6 +2,7 @@ package com.company.Utils;
 
 import com.company.Input;
 import com.company.Runnable.BubbleSort;
+import com.company.Runnable.PrintRandLett;
 import com.company.Runnable.SimpleSth;
 import com.company.Runnable.TaskCreateFile;
 
@@ -81,13 +82,14 @@ public class InitIo {
                 System.out.println("select task:\n" +
                         "1 : bubble sort\n" +
                         "2 : generate random files\n" +
-                        "3 : simple operation");
+                        "3 : simple operation\n" +
+                        "4 : print random string");
                 num = Integer.parseInt(scanner.nextLine());
-                if (num != 1 && num != 2 && num != 3){
+                if (num != 1 && num != 2 && num != 3 && num != 4){
                     throw new NumberFormatException();
                 }
             }catch (NumberFormatException e){
-                System.out.println("only input 1 or 2");
+                System.out.println("retry input");
                 continue;
 
             }
@@ -100,6 +102,7 @@ public class InitIo {
                     break;
                 case 3: input.setRunner(new SimpleSth(countDownLatch));
                     break;
+                case 4: input.setRunner(new PrintRandLett(countDownLatch));
             }
             break;
         }

@@ -6,20 +6,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class HelperFunc
-{
+public class HelperFunc {
     private static final String DATA_FOR_RANDOM_STRING = "abcdefghijklmn";
     private static final int MAX_FILE_NAME_LENGTH = 50;
     private static final int MAX_FILE_NUM = 2;
 
     private static final int MAX_FILE_LENGTH = 100;
-    public static void generateFiles(String dir){
+
+    public static void generateFiles(String dir) {
         Random rand = new Random();
         int firstCount = rand.nextInt(MAX_FILE_NUM) + 1;
         while (firstCount != 0) {
             String filename;
             try {
-                filename =  dir + "\\"+ generateRandomString(rand.nextInt(MAX_FILE_NAME_LENGTH)+1);
+                filename = dir + "\\" + generateRandomString(rand.nextInt(MAX_FILE_NAME_LENGTH) + 1);
                 File myObj = new File(filename);
                 if (myObj.createNewFile()) {
                     System.out.println("File created: " + myObj.getName());
@@ -36,17 +36,17 @@ public class HelperFunc
 
             }
             try {
-                FileWriter fw = new FileWriter(filename,true);
+                FileWriter fw = new FileWriter(filename, true);
 
                 // true for append mode
                 //str stores the string which we have entered
                 int secondCount = rand.nextInt(MAX_FILE_LENGTH);
-                int numStrings = (secondCount / (rand.nextInt(10)+1)+1);
+                int numStrings = (secondCount / (rand.nextInt(10) + 1) + 1);
                 ArrayList<String> listOfString = new ArrayList<String>();
-                for (int i = 0;i<numStrings;i++){
-                    listOfString.add(generateRandomString(rand.nextInt(20)+1));
+                for (int i = 0; i < numStrings; i++) {
+                    listOfString.add(generateRandomString(rand.nextInt(20) + 1));
                 }
-                while (secondCount != 0){
+                while (secondCount != 0) {
                     fw.write(String.format("%s\n", listOfString.get(rand.nextInt(numStrings))));
                     secondCount--;
                 }

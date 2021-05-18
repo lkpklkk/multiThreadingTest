@@ -6,9 +6,8 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TaskCreateFile implements Runnable{
-    private String curDir;
-    private int loopTime;
+public class TaskCreateFile implements Runnable {
+
     @Override
     public void run() {
 

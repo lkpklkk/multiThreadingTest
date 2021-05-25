@@ -1,11 +1,12 @@
 package com.company;
 
-import com.company.utils.InitIo;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author lekeping
+ */
 public class Main {
 
 

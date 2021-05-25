@@ -1,12 +1,15 @@
-package com.company.Runnable;
+package com.company.runnable;
 
-import com.company.Utils.HelperFunc;
+import com.company.utils.Generator;
 
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class TaskCreateFile implements Runnable {
+/**
+ * @author lekeping
+ */
+public class CreateFiles implements Runnable {
 
     @Override
     public void run() {
@@ -16,7 +19,7 @@ public class TaskCreateFile implements Runnable {
         File file = new File(s + "\\genedFiles");
         file.mkdir();
 
-        HelperFunc.generateFiles(file.getAbsolutePath());
+        Generator.generateFiles(file.getAbsolutePath());
         System.out.println(file.getAbsolutePath());
 
     }

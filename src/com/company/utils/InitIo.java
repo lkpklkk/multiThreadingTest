@@ -1,10 +1,10 @@
-package com.company.Utils;
+package com.company.utils;
 
 import com.company.Input;
-import com.company.Runnable.BubbleSort;
-import com.company.Runnable.PrintRandLett;
-import com.company.Runnable.SimpleSth;
-import com.company.Runnable.TaskCreateFile;
+import com.company.runnable.BubbleSort;
+import com.company.runnable.PrintRandLett;
+import com.company.runnable.SimpleAdd;
+import com.company.runnable.CreateFiles;
 
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
@@ -101,10 +101,10 @@ public class InitIo {
                     input.setRunner(new BubbleSort(countDownLatch));
                     break;
                 case 2:
-                    input.setRunner(new TaskCreateFile());
+                    input.setRunner(new CreateFiles());
                     break;
                 case 3:
-                    input.setRunner(new SimpleSth(countDownLatch));
+                    input.setRunner(new SimpleAdd(countDownLatch));
                     break;
                 case 4:
                     input.setRunner(new PrintRandLett(countDownLatch));

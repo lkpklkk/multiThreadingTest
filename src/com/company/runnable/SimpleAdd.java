@@ -1,13 +1,16 @@
-package com.company.Runnable;
+package com.company.runnable;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
-public class SimpleSth implements Runnable {
+/**
+ * @author lekeping
+ */
+public class SimpleAdd implements Runnable {
     private final CountDownLatch latch;
     Random random;
 
-    public SimpleSth(CountDownLatch latch) {
+    public SimpleAdd(CountDownLatch latch) {
         this.random = new Random();
         this.latch = latch;
     }

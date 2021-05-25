@@ -1,4 +1,4 @@
-package com.company.Runnable;
+package com.company.runnable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +19,7 @@ public class BubbleSort implements Runnable {
 
     private ArrayList<Integer> createArr() {
         int size = random.nextInt(ARR_LENGTH) + 1;
-        ArrayList<Integer> list = new ArrayList<Integer>(size);
+        ArrayList<Integer> list = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
             list.add(random.nextInt(size) + 1);
         }

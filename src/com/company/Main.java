@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.Utils.InitIo;
+import com.company.utils.InitIo;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,7 +10,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        // write your code here
+
         InitIo newInit = new InitIo();
         Input input = newInit.userIn();
         Runnable runner = input.getRunner();

@@ -1,12 +1,15 @@
-package com.company.Runnable;
+package com.company.runnable;
 
-import com.company.Utils.HelperFunc;
+import com.company.utils.Generator;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * @author lekeping
+ */
 public class PrintRandLett implements Runnable {
-    private CountDownLatch countDownLatch;
+    private final CountDownLatch countDownLatch;
 
     public PrintRandLett(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
@@ -15,7 +18,7 @@ public class PrintRandLett implements Runnable {
     @Override
     public void run() {
         Random random = new Random();
-        String randString = HelperFunc.generateRandomString(random.nextInt(10) + 5);
+        String randString = Generator.generateRandomString(random.nextInt(10) + 5);
         System.out.println(randString);
         countDownLatch.countDown();
     }

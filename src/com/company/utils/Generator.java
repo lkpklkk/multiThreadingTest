@@ -1,4 +1,4 @@
-package com.company.Utils;
+package com.company.utils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class HelperFunc {
+/**
+ * @author lekeping
+ */
+public class Generator {
     private static final String DATA_FOR_RANDOM_STRING = "abcdefghijklmn";
     private static final int MAX_FILE_NAME_LENGTH = 50;
     private static final int MAX_FILE_NUM = 2;
-
     private static final int MAX_FILE_LENGTH = 100;
 
     public static void generateFiles(String dir) {
@@ -42,7 +44,7 @@ public class HelperFunc {
                 //str stores the string which we have entered
                 int secondCount = rand.nextInt(MAX_FILE_LENGTH);
                 int numStrings = (secondCount / (rand.nextInt(10) + 1) + 1);
-                ArrayList<String> listOfString = new ArrayList<String>();
+                ArrayList<String> listOfString = new ArrayList<>();
                 for (int i = 0; i < numStrings; i++) {
                     listOfString.add(generateRandomString(rand.nextInt(20) + 1));
                 }

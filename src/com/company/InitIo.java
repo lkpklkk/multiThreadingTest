@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.runnable.BubbleSort;
 import com.company.runnable.CreateFiles;
-import com.company.runnable.PrintRandLett;
+import com.company.runnable.PrintRandStr;
 import com.company.runnable.SimpleAdd;
 
 import java.util.Scanner;
@@ -67,7 +67,7 @@ public class InitIo {
                     input.setRunner(new SimpleAdd(countDownLatch));
                     break;
                 case 4:
-                    input.setRunner(new PrintRandLett(countDownLatch));
+                    input.setRunner(new PrintRandStr(countDownLatch));
             }
             break;
         }

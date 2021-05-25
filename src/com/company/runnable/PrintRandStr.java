@@ -7,10 +7,10 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @author lekeping
  */
-public class PrintRandLett implements Runnable {
+public class PrintRandStr implements Runnable {
     private final CountDownLatch countDownLatch;
 
-    public PrintRandLett(CountDownLatch countDownLatch) {
+    public PrintRandStr(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
 

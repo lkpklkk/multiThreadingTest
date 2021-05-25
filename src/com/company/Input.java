@@ -1,6 +1,8 @@
 package com.company;
 
 /**
+ * Organize input data
+ *
  * @author lekeping
  */
 public class Input {

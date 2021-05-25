@@ -14,6 +14,7 @@ public class Generator {
     private static final int MAX_FILE_NAME_LENGTH = 50;
     private static final int MAX_FILE_NUM = 2;
     private static final int MAX_FILE_LENGTH = 100;
+    private static final int STRING_LENGTH = 20;
 
     public static void generateFiles(String dir) {
         Random rand = new Random();
@@ -21,7 +22,7 @@ public class Generator {
         while (firstCount != 0) {
             String filename;
             try {
-                filename = dir + "\\" + generateRandomString(rand.nextInt(MAX_FILE_NAME_LENGTH) + 1);
+                filename = dir + "\\" + generateRandomString();
                 File myObj = new File(filename);
                 if (myObj.createNewFile()) {
                     System.out.println("File created: " + myObj.getName());
@@ -40,22 +41,18 @@ public class Generator {
             try {
                 FileWriter fw = new FileWriter(filename, true);
 
-                // true for append mode
-                //str stores the string which we have entered
-                int secondCount = rand.nextInt(MAX_FILE_LENGTH);
+                //true for append mode
+                int secondCount = MAX_FILE_LENGTH;
                 int numStrings = (secondCount / (rand.nextInt(10) + 1) + 1);
                 ArrayList<String> listOfString = new ArrayList<>();
                 for (int i = 0; i < numStrings; i++) {
-                    listOfString.add(generateRandomString(rand.nextInt(20) + 1));
+                    listOfString.add(generateRandomString());
                 }
                 while (secondCount != 0) {
                     fw.write(String.format("%s\n", listOfString.get(rand.nextInt(numStrings))));
                     secondCount--;
                 }
                 fw.close();
-                //writes bytes into file
-
-                //close the file
                 System.out.println("file saved.");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -64,14 +61,15 @@ public class Generator {
         }
     }
 
-    public static String generateRandomString(int length) {
+    public static String generateRandomString() {
+
         Random random = new Random();
-        if (length < 1) {
+        if (STRING_LENGTH < 1) {
             throw new IllegalArgumentException();
         }
 
-        StringBuilder sb = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
+        StringBuilder sb = new StringBuilder(STRING_LENGTH);
+        for (int i = 0; i < STRING_LENGTH; i++) {
 
             // 0-62 (exclusive), random returns 0-61
             int rndCharAt = random.nextInt(DATA_FOR_RANDOM_STRING.length());

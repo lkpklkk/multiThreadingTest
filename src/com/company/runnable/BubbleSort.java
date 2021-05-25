@@ -8,8 +8,9 @@ import java.util.concurrent.CountDownLatch;
  * @author lekeping
  */
 public class BubbleSort implements Runnable {
-    private static final int ARR_LENGTH = 500;
-    private static final int ARR_NUM = 10;
+
+    private static final int ARR_LENGTH = 30;
+    private static final int ARR_NUM = 25;
     private final Random random = new Random();
     CountDownLatch latch;
 
@@ -18,10 +19,9 @@ public class BubbleSort implements Runnable {
     }
 
     private ArrayList<Integer> createArr() {
-        int size = random.nextInt(ARR_LENGTH) + 1;
-        ArrayList<Integer> list = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            list.add(random.nextInt(size) + 1);
+        ArrayList<Integer> list = new ArrayList<>(ARR_LENGTH);
+        for (int i = 0; i < ARR_LENGTH; i++) {
+            list.add(random.nextInt(ARR_LENGTH) + 1);
         }
         return list;
     }
@@ -40,7 +40,7 @@ public class BubbleSort implements Runnable {
         }
         System.out.println("ok\n");
     }
-
+    
     @Override
     public void run() {
         for (int i = 0; i < ARR_NUM; i++) {

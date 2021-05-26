@@ -6,6 +6,7 @@ package com.company;
  * @author lekeping
  */
 public class Input {
+  
     public int getMode() {
         return mode;
     }

@@ -10,13 +10,24 @@ import java.util.concurrent.CountDownLatch;
 public class BubbleSort implements Runnable {
 
     private static final int ARR_LENGTH = 30;
-    private static final int ARR_NUM = 25;
+    private static final int ARR_NUM = 10;
     private final Random random = new Random();
+    private int rep = 1;
     CountDownLatch latch;
 
     public BubbleSort(CountDownLatch latch) {
         this.latch = latch;
     }
+
+    public BubbleSort(int rep) {
+        this.rep = rep;
+    }
+
+    public BubbleSort() {
+        this.latch = null;
+
+    }
+
 
     private ArrayList<Integer> createArr() {
         ArrayList<Integer> list = new ArrayList<>(ARR_LENGTH);
@@ -38,15 +49,21 @@ public class BubbleSort implements Runnable {
                 }
             }
         }
-        System.out.println("ok\n");
     }
-    
+
     @Override
     public void run() {
-        for (int i = 0; i < ARR_NUM; i++) {
-            ArrayList<Integer> list = createArr();
-            bubbleSort(list);
+        while (rep != 0) {
+            for (int i = 0; i < ARR_NUM; i++) {
+                ArrayList<Integer> list = createArr();
+                bubbleSort(list);
+            }
+            if (latch != null) {
+                latch.countDown();
+            }
+            rep--;
         }
-        latch.countDown();
+
+
     }
 }

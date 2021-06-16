@@ -17,111 +17,93 @@ import java.util.concurrent.TimeUnit;
  */
 public class JmhMain {
 
-    @State(Scope.Thread)
 
-    public static class OfficialTest {
-        private ExecutorService executorService;
-        private Runnable runnable;
-        @Param({"1", "5", "6", "7", "10", "20", "100", "200"})
-        int threadNum;
-        int taskNum = 300;
-        @Param({"1", "2", "3"})
-        int taskType;
+    public static final int FIND_PERFECT_SQUARE_1000MS = 65900;
+    public static final int FIND_PERFECT_SQUARE_500MS = 46590;
+    public static final int DEFAULT_TEST_VALUE = 100;
 
+    @State(Scope.Benchmark)
+    public static class TestNum1000Final {
         public static void main(String[] args) throws RunnerException {
             System.out.println(Runtime.getRuntime().availableProcessors());
             Options opt = new OptionsBuilder()
-                    .addProfiler("stack")
-                    .include(OfficialTest.class.getSimpleName())
-                    .forks(2)
-                    .warmupIterations(1)
-                    .warmupForks(1)
-                    .mode(Mode.AverageTime) //Calculate number of operations in a time unit.//Calculate an average running time per operation
+                    .include(TestNum1000Final.class.getSimpleName())
+                    .warmupIterations(0)
+                    .warmupTime(TimeValue.seconds(5))
+                    .warmupForks(0)
+                    .forks(1)
+                    .mode(Mode.AverageTime)
                     .timeUnit(TimeUnit.MILLISECONDS)
-                    .measurementTime(new TimeValue(10, TimeUnit.SECONDS))
-                    .measurementIterations(5)
+                    .measurementTime(new TimeValue(1, TimeUnit.SECONDS))
+                    .measurementIterations(3)
                     .build();
 
             new Runner(opt).run();
         }
+
+        private ExecutorService executorService;
+        private Runnable runnable;
+        private Task task;
+        @Param({"96", "97", "98", "99", "100"})
+        int threadNum;
+        int taskNum = 100;
+        @Param({"2"})
+        int taskType;
+        @Param({"0"})
+        double waitPercentage;
+        @Param({"false"})
+        boolean isSingle;
 
         @Setup(Level.Invocation)
         public void setUp() {
+
             executorService = Executors.newFixedThreadPool(threadNum);
             switch (taskType) {
                 case 1:
-                    runnable = new RunnableTask(new AlmostCpu(100));
+                    //around 150 ms
+                    task = (new AlmostCpu(DEFAULT_TEST_VALUE));
                     break;
                 case 2:
-                    runnable = new RunnableTask(new AlmostIo(100));
+                    //around 200 ms
+                    task = (new AlmostIo(DEFAULT_TEST_VALUE));
                     break;
                 case 3:
-                    runnable = new RunnableTask(new InBetween(100));
+                    // around 150ms
+                    task = new InBetweenOri150ms(DEFAULT_TEST_VALUE, Math.round(150 * (waitPercentage / 100)));
+                    break;
+                case 4:
+                    // around 10ms
+                    task = new InBetween10ms(DEFAULT_TEST_VALUE, Math.round(10 * (waitPercentage / 100)));
+                    break;
+                case 5:
+                    //around 1000ms
+                    task = new FindPerfectSquareRoot(FIND_PERFECT_SQUARE_1000MS, Math.round(1000 * (waitPercentage / 100)));
+                    break;
+                case 6:
+                    //around 500ms
+                    task = new FindPerfectSquareRoot(FIND_PERFECT_SQUARE_500MS, Math.round(500 * (waitPercentage / 100)));
                     break;
                 default:
                     break;
             }
+            runnable = new RunnableTask(task);
         }
 
         @Benchmark
-        public boolean test() throws InterruptedException {
-            for (int i = 0; i < taskNum; i++) {
-                executorService.execute(runnable);
+        public void test() throws InterruptedException {
+            if (isSingle) {
+                task.run();
+            } else {
+                for (int i = 0; i < taskNum; i++) {
+                    executorService.execute(runnable);
+                }
+                executorService.shutdown();
+                executorService.awaitTermination(30, TimeUnit.MINUTES);
             }
-            executorService.shutdown();
-            return executorService.awaitTermination(50, TimeUnit.SECONDS);
+
+
         }
     }
 
-    @State(Scope.Thread)
-    @Warmup(iterations = 0)
-    @BenchmarkMode(Mode.Throughput)
-    public static class StandAloneTask {
-        Task task;
-        @Param
-        int taskType;
-
-        @Setup(Level.Iteration)
-        public void setUp() {
-            switch (taskType) {
-                case 1:
-                    task = new AlmostCpu(100);
-                    break;
-                case 2:
-                    task = new AlmostIo(100);
-                    break;
-                case 3:
-                    task = new InBetween(100);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public static void main(String[] args) throws RunnerException {
-            System.out.println(Runtime.getRuntime().availableProcessors());
-            Options opt = new OptionsBuilder()
-                    .addProfiler("stack")
-                    .include(StandAloneTask.class.getSimpleName())
-                    .forks(2)
-                    .warmupIterations(1)
-                    .warmupForks(0)
-                    .mode(Mode.Throughput) //Calculate number of operations in a time unit.//Calculate an average running time per operation
-                    .timeUnit(TimeUnit.MILLISECONDS)
-                    .measurementTime(new TimeValue(5, TimeUnit.SECONDS))
-                    .measurementIterations(5)
-                    .build();
-
-            new Runner(opt).run();
-        }
-
-
-        @Benchmark
-        public void benchMark() throws InterruptedException {
-
-            task.run();
-
-        }
-    }
 
 }

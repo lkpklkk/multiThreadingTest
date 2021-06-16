@@ -1,19 +1,16 @@
 package com.company.jmhtesting;
 
-/**
- * looking for how many number between rep and rep * 2 can be perfected square rooted
- *
- * @author lekeping
- */
-public class AlmostCpu implements Task {
+public class InBetweenOri150ms implements Task {
     int input;
+    private long waitTimeMili;
 
-    public AlmostCpu(int input) {
+    public InBetweenOri150ms(int input, long waitTimeMili) {
         this.input = input;
+        this.waitTimeMili = waitTimeMili;
     }
 
     @Override
-    public int run() {
+    public int run() throws InterruptedException {
         int count = 0;
         for (int i = input; i < input * 10; i++) {
             int o = i;
@@ -33,6 +30,7 @@ public class AlmostCpu implements Task {
                 }
             }
         }
+        Thread.sleep(waitTimeMili);
         return count;
     }
 }

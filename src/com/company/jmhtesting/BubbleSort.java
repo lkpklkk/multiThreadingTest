@@ -3,6 +3,9 @@ package com.company.jmhtesting;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author lekeping
+ */
 public class BubbleSort implements Task {
     int rep;
     private static final int ARR_LENGTH = 30;

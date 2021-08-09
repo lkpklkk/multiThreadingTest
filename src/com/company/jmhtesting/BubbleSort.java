@@ -30,7 +30,7 @@ public class BubbleSort implements Task {
     }
 
     private ArrayList<Integer> createArr() {
-        ArrayList<Integer> list = new ArrayList<>(ARR_LENGTH);
+        ArrayList<Integer> list = new ArrayList<Integer>(ARR_LENGTH);
         for (int i = 0; i < ARR_LENGTH; i++) {
             list.add(random.nextInt(ARR_LENGTH) + 1);
         }

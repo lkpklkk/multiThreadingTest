@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @State(Scope.Benchmark)
-public class TestNum1000Final {
+public class Main {
     public static final int FIND_PERFECT_SQUARE_1000MS = 65900;
     public static final int FIND_PERFECT_SQUARE_500MS = 46590;
     public static final int DEFAULT_TEST_VALUE = 100;
@@ -27,7 +27,7 @@ public class TestNum1000Final {
     public static void main(String[] args) throws RunnerException {
         System.out.println(Runtime.getRuntime().availableProcessors());
         Options opt = new OptionsBuilder()
-                .include(TestNum1000Final.class.getSimpleName())
+                .include(Main.class.getSimpleName())
                 .warmupIterations(0)
                 .warmupTime(TimeValue.seconds(5))
                 .warmupForks(0)
@@ -103,7 +103,7 @@ public class TestNum1000Final {
             executorService.awaitTermination(30, TimeUnit.MINUTES);
         }
 
-
+    
     }
 }
 

@@ -1,37 +1,8 @@
 ## Parameters: (taskType = 1, threadNum = 3)
 
-....[Thread state distributions].................................................................... 79.8% RUNNABLE
-20.2% TIMED_WAITING
 
-....[Thread state: RUNNABLE]........................................................................ 59.5% 74.6%
-com.company.jmhtesting.AlmostCpu.run 20.2% 25.3% java.net.SocketInputStream.socketRead0 0.0% 0.0% <stack is empty,
-everything is filtered?>
-0.0% 0.0% java.lang.Thread.currentThread 0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0%
-java.util.concurrent.ThreadPoolExecutor.getTask 0.0% 0.0% sun.misc.Unsafe.getIntVolatile 0.0% 0.0%
-java.util.concurrent.ThreadPoolExecutor.processWorkerExit
 
-....[Thread state: TIMED_WAITING]................................................................... 20.2% 100.0%
-sun.misc.Unsafe.park
 
-## Parameters: (taskType = 1, threadNum = 6)
-
-Iteration 1: 2.587 s/op ·stack: <delayed till summary>
-
-Iteration 2: 2.591 s/op ·stack: <delayed till summary>
-
-2.589 s/op
-
-....[Thread state distributions].................................................................... 87.0% RUNNABLE
-13.0% TIMED_WAITING
-
-....[Thread state: RUNNABLE]........................................................................ 73.9% 84.9%
-com.company.jmhtesting.AlmostCpu.run 13.1% 15.0% java.net.SocketInputStream.socketRead0 0.0% 0.0% <stack is empty,
-everything is filtered?>
-0.0% 0.0% java.util.concurrent.TimeUnit.x 0.0% 0.0% java.util.concurrent.ThreadPoolExecutor.workerCountOf 0.0% 0.0%
-sun.misc.Unsafe.compareAndSwapInt
-
-....[Thread state: TIMED_WAITING]................................................................... 13.0% 100.0%
-sun.misc.Unsafe.park
 
 ## Parameters: (taskType = 1, threadNum = 12)
 
@@ -132,8 +103,8 @@ Iteration 1: 34.083 s/op ·stack: <delayed till summary>
 
 Iteration 2: 34.083 s/op ·stack: <delayed till summary>
 
-34.083 s/op ....[Thread state distributions].................................................................... 79.4%
-TIMED_WAITING 20.6% RUNNABLE
+        34.083 s/op ....[Thread state distributions].................................................................... 79.4%
+        TIMED_WAITING 20.6% RUNNABLE
 
         ....[Thread state: TIMED_WAITING]................................................................... 59.2% 74.5%
         java.lang.Thread.sleep 20.2% 25.5% sun.misc.Unsafe.park
@@ -321,17 +292,17 @@ Iteration 2: 2.768 s/op ·stack: <delayed till summary>
 
 2.800 s/op
 
-....[Thread state distributions].................................................................... 52.7% RUNNABLE
-47.3% TIMED_WAITING
-
-....[Thread state: RUNNABLE]........................................................................ 44.9% 85.1%
-com.company.jmhtesting.InBetween10ms.run 7.7% 14.7% java.net.SocketInputStream.socketRead0 0.0% 0.1%
-java.lang.Thread.sleep 0.0% 0.1% <stack is empty, everything is filtered?>
-0.0% 0.0% java.lang.Thread.isInterrupted 0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0%
-sun.misc.Unsafe.compareAndSwapLong 0.0% 0.0% com.company.jmhtesting.RunnableTask.run
-
-....[Thread state: TIMED_WAITING]................................................................... 39.6% 83.7%
-java.lang.Thread.sleep 7.7% 16.3% sun.misc.Unsafe.park
+        ....[Thread state distributions].................................................................... 52.7% RUNNABLE
+        47.3% TIMED_WAITING
+        
+        ....[Thread state: RUNNABLE]........................................................................ 44.9% 85.1%
+        com.company.jmhtesting.InBetween10ms.run 7.7% 14.7% java.net.SocketInputStream.socketRead0 0.0% 0.1%
+        java.lang.Thread.sleep 0.0% 0.1% <stack is empty, everything is filtered?>
+        0.0% 0.0% java.lang.Thread.isInterrupted 0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0%
+        sun.misc.Unsafe.compareAndSwapLong 0.0% 0.0% com.company.jmhtesting.RunnableTask.run
+        
+        ....[Thread state: TIMED_WAITING]................................................................... 39.6% 83.7%
+        java.lang.Thread.sleep 7.7% 16.3% sun.misc.Unsafe.park
 
 ## Parameters: (taskType = 3, threadNum = 24)
 
@@ -345,16 +316,16 @@ Iteration 2: 2.687 s/op ·stack: <delayed till summary>
 
 2.691 s/op
 
-....[Thread state distributions].................................................................... 58.6% RUNNABLE
-41.4% TIMED_WAITING
-
-....[Thread state: RUNNABLE]........................................................................ 54.1% 92.3%
-com.company.jmhtesting.InBetween10ms.run 4.4% 7.5% java.net.SocketInputStream.socketRead0 0.0% 0.1% <stack is empty,
-everything is filtered?>
-0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0% java.lang.Thread.sleep 0.0% 0.0% sun.misc.Unsafe.getIntVolatile
-
-....[Thread state: TIMED_WAITING]................................................................... 37.0% 89.4%
-java.lang.Thread.sleep 4.4% 10.6% sun.misc.Unsafe.park
+        ....[Thread state distributions].................................................................... 58.6% RUNNABLE
+        41.4% TIMED_WAITING
+        
+        ....[Thread state: RUNNABLE]........................................................................ 54.1% 92.3%
+        com.company.jmhtesting.InBetween10ms.run 4.4% 7.5% java.net.SocketInputStream.socketRead0 0.0% 0.1% <stack is empty,
+        everything is filtered?>
+        0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0% java.lang.Thread.sleep 0.0% 0.0% sun.misc.Unsafe.getIntVolatile
+        
+        ....[Thread state: TIMED_WAITING]................................................................... 37.0% 89.4%
+        java.lang.Thread.sleep 4.4% 10.6% sun.misc.Unsafe.park
 
 ## Parameters: (taskType = 3, threadNum = 48)
 
@@ -368,30 +339,30 @@ Iteration 2: 2.689 s/op ·stack: <delayed till summary>
 
 2.693 s/op
 
-....[Thread state distributions].................................................................... 59.9% RUNNABLE
-40.1% TIMED_WAITING
-
-....[Thread state: RUNNABLE]........................................................................ 57.2% 95.5%
-com.company.jmhtesting.InBetween10ms.run 2.5% 4.2% java.net.SocketInputStream.socketRead0 0.1% 0.2%
-java.lang.Thread.sleep 0.0% 0.1% <stack is empty, everything is filtered?>
-0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0% sun.misc.Unsafe.unpark
-
-....[Thread state: TIMED_WAITING]................................................................... 37.7% 93.9%
-java.lang.Thread.sleep 2.5% 6.1% sun.misc.Unsafe.park
-
-## Parameters: (taskType = 3, threadNum = 96)
-
-....[Thread state distributions].................................................................... 65.9% TIMED_WAITING
-34.1% RUNNABLE
-
-....[Thread state: TIMED_WAITING]................................................................... 64.4% 97.7%
-java.lang.Thread.sleep 1.5% 2.3% sun.misc.Unsafe.park
-
-....[Thread state: RUNNABLE]........................................................................ 32.5% 95.2%
-com.company.jmhtesting.InBetween10ms.run 1.5% 4.5% java.net.SocketInputStream.socketRead0 0.0% 0.1% <stack is empty,
-everything is filtered?>
-0.0% 0.1% java.lang.Thread.sleep 0.0% 0.0% java.security.AccessController.getStackAccessControlContext 0.0% 0.0%
-sun.misc.Unsafe.compareAndSwapInt
+        ....[Thread state distributions].................................................................... 59.9% RUNNABLE
+        40.1% TIMED_WAITING
+        
+        ....[Thread state: RUNNABLE]........................................................................ 57.2% 95.5%
+        com.company.jmhtesting.InBetween10ms.run 2.5% 4.2% java.net.SocketInputStream.socketRead0 0.1% 0.2%
+        java.lang.Thread.sleep 0.0% 0.1% <stack is empty, everything is filtered?>
+        0.0% 0.0% sun.misc.Unsafe.compareAndSwapInt 0.0% 0.0% sun.misc.Unsafe.unpark
+        
+        ....[Thread state: TIMED_WAITING]................................................................... 37.7% 93.9%
+        java.lang.Thread.sleep 2.5% 6.1% sun.misc.Unsafe.park
+        
+        ## Parameters: (taskType = 3, threadNum = 96)
+        
+        ....[Thread state distributions].................................................................... 65.9% TIMED_WAITING
+        34.1% RUNNABLE
+        
+        ....[Thread state: TIMED_WAITING]................................................................... 64.4% 97.7%
+        java.lang.Thread.sleep 1.5% 2.3% sun.misc.Unsafe.park
+        
+        ....[Thread state: RUNNABLE]........................................................................ 32.5% 95.2%
+        com.company.jmhtesting.InBetween10ms.run 1.5% 4.5% java.net.SocketInputStream.socketRead0 0.0% 0.1% <stack is empty,
+        everything is filtered?>
+        0.0% 0.1% java.lang.Thread.sleep 0.0% 0.0% java.security.AccessController.getStackAccessControlContext 0.0% 0.0%
+        sun.misc.Unsafe.compareAndSwapInt
 
 ## Run Summary. Total time: 00:08:12
 

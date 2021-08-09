@@ -2,7 +2,7 @@ package com.company.jmhtesting;
 
 public class InBetweenOri150ms implements Task {
     int input;
-    private long waitTimeMili;
+    private final long waitTimeMili;
 
     public InBetweenOri150ms(int input, long waitTimeMili) {
         this.input = input;

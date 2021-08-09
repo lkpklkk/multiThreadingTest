@@ -43,7 +43,7 @@ public class Generator {
                 //true for append mode
                 int fileLength = MAX_FILE_LENGTH;
                 int numStrings = (fileLength / (rand.nextInt(10) + 1) + 1);
-                ArrayList<String> listOfString = new ArrayList<>();
+                ArrayList<String> listOfString = new ArrayList<String>();
                 for (int i = 0; i < numStrings; i++) {
                     listOfString.add(generateRandomString());
                 }
@@ -69,7 +69,7 @@ public class Generator {
 
         StringBuilder sb = new StringBuilder(STRING_LENGTH);
         for (int i = 0; i < STRING_LENGTH; i++) {
-            
+
 
             int rndCharAt = random.nextInt(DATA_FOR_RANDOM_STRING.length());
             char rndChar = DATA_FOR_RANDOM_STRING.charAt(rndCharAt);

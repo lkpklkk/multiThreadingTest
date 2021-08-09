@@ -5,8 +5,8 @@ package com.company.jmhtesting;
  */
 public class InBetween10ms implements Task {
     int rep;
-    private int REP_MULTIPLY = 42;
-    private long waitTimeMili;
+    private final int REP_MULTIPLY = 42;
+    private final long waitTimeMili;
 
     public InBetween10ms(int rep, long waitTimeMili) {
         this.rep = rep;
